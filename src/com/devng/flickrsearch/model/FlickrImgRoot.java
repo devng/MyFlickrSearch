@@ -1,6 +1,10 @@
 package com.devng.flickrsearch.model;
 
-public class FlickrImgRoot {
+import java.io.Serializable;
+
+public class FlickrImgRoot implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private FlickrImgContainer photos;
 

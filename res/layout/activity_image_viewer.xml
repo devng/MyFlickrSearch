@@ -1,34 +1,33 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parentLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ImageViewerActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/parentLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin"
+	tools:context=".ImageViewerActivity">
 
 
-    <TextView
-        android:id="@+id/searchingLabel"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/search_results" />
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/imageView2"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentBottom="true"
+		android:src="@drawable/ic_launcher"
+		android:visibility="gone" />
 
-    <ListView
-        android:id="@+id/imageContainer"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"></ListView>
+	<ProgressBar
+		style="?android:attr/progressBarStyleLarge"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/progressBar2"
+		android:layout_centerVertical="true"
+		android:layout_centerHorizontal="true"
+		android:visibility="visible" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
-
-</LinearLayout>
+</RelativeLayout>

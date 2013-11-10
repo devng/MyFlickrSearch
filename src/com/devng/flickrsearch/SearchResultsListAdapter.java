@@ -1,8 +1,5 @@
 package com.devng.flickrsearch;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.util.Pair;
@@ -15,13 +12,16 @@ import android.widget.TextView;
 
 import com.devng.flickrsearch.model.FlickrImgRef;
 
-public class ImageViewerListAdapter extends BaseAdapter{
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchResultsListAdapter extends BaseAdapter {
 
 	private List<Pair<Bitmap, FlickrImgRef>> data;
 
 	private Activity parentActivity;
 
-	public ImageViewerListAdapter(Activity parentActivity) {
+	public SearchResultsListAdapter(Activity parentActivity) {
 		this.data = new ArrayList<Pair<Bitmap, FlickrImgRef>>();
 		this.parentActivity = parentActivity;
 	}
@@ -46,7 +46,9 @@ public class ImageViewerListAdapter extends BaseAdapter{
 		this.notifyDataSetChanged();
 	}
 
-    /** A reference holder class so we do not call findViewById that often */
+	/**
+	 * A reference holder class so we do not call findViewById that often
+	 */
 	private class ViewHolder {
 		TextView flickrName;
 		ImageView imageView;

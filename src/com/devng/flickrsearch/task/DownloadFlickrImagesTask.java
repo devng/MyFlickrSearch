@@ -7,7 +7,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.util.Pair;
 
-import com.devng.flickrsearch.Config;
+import com.devng.flickrsearch.common.Enums;
+import com.devng.flickrsearch.common.Helpers;
 import com.devng.flickrsearch.model.FlickrImgRef;
 
 public class DownloadFlickrImagesTask extends AsyncTask<FlickrImgRef, Pair<Bitmap, FlickrImgRef>, Void> {
@@ -16,15 +17,18 @@ public class DownloadFlickrImagesTask extends AsyncTask<FlickrImgRef, Pair<Bitma
 
 	private final DownloadFlickrImagesHandler handler;
 
-	public DownloadFlickrImagesTask( DownloadFlickrImagesHandler handler) {
+	private final Enums.ImageSize imageSize;
+
+	public DownloadFlickrImagesTask(DownloadFlickrImagesHandler handler, Enums.ImageSize imageSize) {
 		this.handler = handler;
+		this.imageSize = imageSize;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	protected Void doInBackground(FlickrImgRef... imgRefs) {
 		for (int i = 0; i < imgRefs.length; i++) {
-			String imgUrl = TaskHelper.constructFlickrImgUrl(imgRefs[i], Config.IMAGE_SIZE_SMALL);
+			String imgUrl = Helpers.constructFlickrImgUrl(imgRefs[i], this.imageSize);
 			Bitmap bitmap = this.downloadBitmap(imgUrl);
 			publishProgress(new Pair<Bitmap, FlickrImgRef>(bitmap, imgRefs[i]));
 		}
@@ -33,7 +37,7 @@ public class DownloadFlickrImagesTask extends AsyncTask<FlickrImgRef, Pair<Bitma
 
 	private Bitmap downloadBitmap(String url) {
 		Log.d(LOG_TAG, "Downloading image from url: " + url);
-		byte[] response = TaskHelper.doGet(url);
+		byte[] response = Helpers.doGet(url);
 		if (response == null || response.length == 0) {
 			return null;
 		}
@@ -46,16 +50,16 @@ public class DownloadFlickrImagesTask extends AsyncTask<FlickrImgRef, Pair<Bitma
 	@Override
 	protected void onProgressUpdate(Pair<Bitmap, FlickrImgRef>... pairs) {
 		super.onProgressUpdate(pairs);
-        if (pairs != null) {
-            for (Pair<Bitmap, FlickrImgRef> pair : pairs) {
-                handler.handleDownloadedFlickrImage(pair);
-            }
-        }
+		if (pairs != null) {
+			for (Pair<Bitmap, FlickrImgRef> pair : pairs) {
+				handler.onDownloadedFlickrImage(pair);
+			}
+		}
 	}
 
 	@Override
 	protected void onPostExecute(Void result) {
 		super.onPostExecute(result);
-		handler.onFinish();
+		handler.onDownloadFinish();
 	}
 }

@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">My Flickr Search</string>
-    <string name="search">Search</string>
-    <string name="random">Random</string>
-    <string name="search_hint">Search Term</string>
-    <string name="go">Go</string>
-    <string name="search_results">Search results for </string>
-    <string name="textTooShort">Please enter a search term.</string>
-    <string name="title_activity_searching_indicator">SearchingIndicatorActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="flickr_images">Flickr Images</string>
+	<string name="app_name">My Flickr Search</string>
+	<string name="search">Search</string>
+	<string name="random">Random</string>
+	<string name="search_hint">Search Term</string>
+	<string name="go">Go</string>
+	<string name="search_results">Search results for </string>
+	<string name="textTooShort">Please enter a search term.</string>
+	<string name="action_settings">Settings</string>
+	<string name="flickr_images">Flickr Images</string>
+	<string name="sort_by_label">Sort by:</string>
+	<!-- Order is relevant and must be the same as in Enums.SortOrder -->
+	<string-array name="sort_by_array">
+		<item>Relevance</item>
+		<item>Interestingness</item>
+		<item>Date posted</item>
+		<item>Date taken</item>
+	</string-array>
 
 </resources>

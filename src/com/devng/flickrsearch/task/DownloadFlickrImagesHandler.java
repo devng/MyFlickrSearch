@@ -7,7 +7,7 @@ import com.devng.flickrsearch.model.FlickrImgRef;
 
 public interface DownloadFlickrImagesHandler {
 
-	void handleDownloadedFlickrImage(Pair<Bitmap, FlickrImgRef> pair);
-	
-	void onFinish();
+	void onDownloadedFlickrImage(Pair<Bitmap, FlickrImgRef> pair);
+
+	void onDownloadFinish();
 }

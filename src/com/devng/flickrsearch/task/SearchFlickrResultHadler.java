@@ -1,9 +1,11 @@
 package com.devng.flickrsearch.task;
 
-import java.util.List;
-
 import com.devng.flickrsearch.model.FlickrImgRef;
 
+import java.util.List;
+
 public interface SearchFlickrResultHadler {
-	void handleSearchFlickrResult(List<FlickrImgRef> result);
+
+	void onSearchFlickrResult(List<FlickrImgRef> result);
+
 }
